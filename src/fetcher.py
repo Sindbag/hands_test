@@ -10,7 +10,7 @@ logger = logging.getLogger(__name__)
 
 class PhoneFetcher:
     RU_PHONES_REGEX = r'\b(?!-)(?P<prefix>[7|8])?[\s\-]?\(?(?P<city>[0-9]{3})?\)?[\s\-]?' \
-                      r'(?P<number>([0-9][\-\f ]?){6}[0-9]{1})(?!-)\b'
+                      r'(?P<number>([0-9][\-\f ]?){5}[0-9]{2})(?!-)\b'
 
     def __init__(self, debug=False):
         self._rec = re.compile(PhoneFetcher.RU_PHONES_REGEX, re.MULTILINE)
@@ -50,7 +50,7 @@ class PhoneFetcher:
             gd = match.groupdict()
             res.add(
                 '8{city}{number}'.format(
-                    city=gd.get('city', 495),
+                    city=gd.get('city') or 495,
                     number=re.sub('[^0-9]', '', gd['number'])
                 ).strip()
             )
