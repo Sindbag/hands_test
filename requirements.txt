@@ -1,0 +1,4 @@
+requests
+asyncio
+aiohttp
+beautifulsoup4
