@@ -9,7 +9,7 @@ logger = logging.getLogger(__name__)
 
 
 class PhoneFetcher:
-    RU_PHONES_REGEX = r'\b(?!-)(?P<prefix>[7|8])?[\s\-]?\(?(?P<city>[0-9]{3})?\)?[\s\-]?' \
+    RU_PHONES_REGEX = r'\b(?!-)(?P<prefix>[7|8])?[\-\f ]?\(?(?P<city>[0-9]{3})?\)?[\-\f ]?' \
                       r'(?P<number>([0-9][\-\f ]?){5}[0-9]{2})(?!-)\b'
 
     def __init__(self, debug=False):
